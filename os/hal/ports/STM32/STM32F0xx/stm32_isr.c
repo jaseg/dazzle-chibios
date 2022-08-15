@@ -23,6 +23,7 @@
  */
 
 #include "hal.h"
+#include "stm32_tim15.inc"
 
 /*===========================================================================*/
 /* Driver local definitions.                                                 */
@@ -261,6 +262,8 @@ void irqInit(void) {
   nvicEnableVector(STM32_USART2_NUMBER, STM32_IRQ_USART2_PRIORITY);
   nvicEnableVector(STM32_USART3_8_NUMBER, STM32_IRQ_USART3_8_PRIORITY);
 #endif
+
+  tim15_irq_init();
 }
 
 /**
@@ -281,6 +284,8 @@ void irqDeinit(void) {
   nvicDisableVector(STM32_USART2_NUMBER);
   nvicDisableVector(STM32_USART3_8_NUMBER);
 #endif
+
+  tim15_irq_deinit();
 }
 
 /** @} */
